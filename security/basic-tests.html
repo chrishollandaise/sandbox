@@ -30,13 +30,13 @@
           Screen Resolution: ${screen.width}x${screen.height}
           "Cookies: ${document.cookie}" 
         `;
-        window.alert(info);
+        window.top.alert(info);
       }
 
       function redirect() {
-        window.history.replaceState(null, "", "/bad-actor");
+        window.top.history.href.replaceState(null, "", "/bad-actor");
         // redirect to the Rick Roll video
-        window.location.href = "http://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        window.top.location.href = "http://www.youtube.com/watch?v=dQw4w9WgXcQ";
       }
     </script>
   </head>

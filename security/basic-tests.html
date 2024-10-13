@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Test Page</title>
+    <script>
+      // Alert on page load
+      window.onload = function () {
+        alert(
+          "WARNING: Your computer has been infected! Call this number immediately to fix the issue!\n\n1-800-YOU-GOT-PWNED"
+        );
+      };
+
+      var getCookies = function () {
+        var pairs = document.cookie.split(";");
+        var cookies = {};
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split("=");
+          cookies[(pair[0] + "").trim()] = unescape(pair.slice(1).join("="));
+        }
+        return cookies;
+      };
+
+      // Function to show page information
+      function showPageInfo() {
+        var info = `
+          URL: ${window.location.href}
+          User Agent: ${navigator.userAgent}
+          Screen Resolution: ${screen.width}x${screen.height}
+          "Cookies: ${document.cookie}" 
+        `;
+        window.alert(info);
+      }
+
+      function redirect() {
+        window.history.replaceState(null, "", "/bad-actor");
+        // redirect to the Rick Roll video
+        window.location.href = "http://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Security Playground</h1>
+    <button onclick="showPageInfo()">Show Page Information</button>
+    <button onclick="redirect()">Redirect current page</button>
+  </body>
+</html>
